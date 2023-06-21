@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %} Boggle {% endblock %}
+
+{% block content %}
+
+<h1>Boggle</h1>
+<p>Find as many words as you can!</p>
+
+<form id="word-form" method="POST">
+    <label for="submitted-word">Submit Word:</label><br>
+    <input id="word-input" type="text" name="submitted-word" placeholder="word">
+    <button id="word-button" type="submit">Submit</button>   
+</form>
+
+<container id="gameboard-container" class="container">
+    <section id="game-score">
+        <b>Game Score:</b> 0
+    </section>
+    <section id="countdown-clock">
+       <b>Time Left:</b> 60 
+    </section>
+    <section>
+        <b>Number of Plays:</b> {{nplays}}
+    </section>
+    <section>
+        <b>High Score:</b> {{highScore}}
+    </section>
+    <table id="gameboard">
+    {% for row in board %}
+        <tr>
+        {% for cell in row %}
+            <td>{{cell}}</td>
+        {% endfor %}
+        </tr>
+    {% endfor %}
+    </table>
+
+</container>
+{% endblock %}
